@@ -7,6 +7,7 @@
   Feeds 
     * are defined by name (case insensitive)
     * get created and destroyed as needed
+    
     * feed can have multiple subscribers
     - has its own settings (see project settings Plugins->NotificationBackboneSettings)
       -delay dispatching
