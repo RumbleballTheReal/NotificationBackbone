@@ -26,26 +26,12 @@ public:
 	// Return value is only to make this a function, would be a event otherwise.
 	UFUNCTION(BlueprintNativeEvent, Category = "NotificationBackbone|Listener")
 		bool OnNotification(const FNotificationBackboneNotification& notification);
-
-	// Return value is only to make this a function, would be a event otherwise.
-	UFUNCTION(BlueprintNativeEvent, Category = "NotificationBackbone|Listener")
-		bool OnQuery(const FNotificationBackboneQuery& query);
-
-	// Called if you are subscribed to receive queries and someone else subscribes
-	// Return value is only to make this a function, would be a event otherwise.
-	UFUNCTION(BlueprintNativeEvent, Category = "NotificationBackbone|Listener")
-		bool OnQueryRegistrationStolen();
 };
 
 class NOTIFICATIONBACKBONE_API INotificationBackboneListenerRaw
 {
 public:
 	virtual void OnNotification(const FNotificationBackboneNotification& notification) = 0;
-
-	virtual void OnQuery(const FNotificationBackboneQuery& query) = 0;
-
-	// Called if you are subscribed to receive queries and someone else subscribes
-	virtual void OnQueryRegistrationStolen() = 0;
 
 	// Return an appropriate name so we know who is listening. Class name is always good.
 	virtual FName GetNotificationBackboneListenerName() = 0;

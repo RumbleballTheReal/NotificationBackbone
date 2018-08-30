@@ -37,43 +37,6 @@ public:
 		FNotificationBackboneManager::Get().DispatchNotification(notification);
 	}
 
-	UFUNCTION(BlueprintCallable, Category = "NotificationBackbone")
-		static void RegisterForQueries(TScriptInterface<INotificationBackboneListener> object)
-	{
-		FNotificationBackboneManager::Get().RegisterForQueriesUObject(object);
-	}
-
-	UFUNCTION(BlueprintCallable, Category = "NotificationBackbone")
-		static void UnregisterFromQueries(TScriptInterface<INotificationBackboneListener> object)
-	{
-		FNotificationBackboneManager::Get().UnregisterFromQueriesUObject(object);
-	}
-
-	UFUNCTION(BlueprintCallable, Category = "NotificationBackbone")
-		static bool EnqueueQuery(const FNotificationBackboneQueryData& query, FNotificationBackboneDynamicDelegate callback)
-	{
-		return FNotificationBackboneManager::Get().EnqueueQuery(query, callback);
-	}
-
-	UFUNCTION(BlueprintCallable, Category = "NotificationBackbone")
-		static void AnswerQuery(const FNotificationBackboneQueryId& queryId, ENotificationBackboneQueryOptions optionChooosen)
-	{
-		FNotificationBackboneManager::Get().AnswerQuery(queryId, optionChooosen);
-	}
-
-	UFUNCTION(BlueprintPure, Category = "NotificationBackbone")
-		static bool IsSomeoneListeningForQueries(TScriptInterface<INotificationBackboneListener> object)
-	{
-		return FNotificationBackboneManager::Get().GetIsSomeoneListeningForQueries();
-	}
-
-	// Returns empty string if no listener
-	UFUNCTION(BlueprintPure, Category = "NotificationBackbone")
-		static FString GetQueryListenerName()
-	{
-		return FNotificationBackboneManager::Get().GetQueryListenerName();
-	}
-
 	UFUNCTION(BlueprintPure, Category = "NotificationBackbone")
 		static bool DoesNotificationFeedExist(const FName& feed)
 	{
@@ -225,18 +188,6 @@ public:
 			return true;
 		}
 		return false;
-	}
-
-	UFUNCTION(BlueprintPure, Category = "NotificationBackbone", meta = (AutoCreateRefTerm = "options,customOptions", NativeMakeFunc))
-		static FNotificationBackboneQueryData MakeNotificationBackboneQueryData(const FNotificationBackboneMessageData& data, const TArray<ENotificationBackboneQueryOptions>& options, const TArray<FString>& customOptions)
-	{
-		FNotificationBackboneQueryData queryData;
-		queryData.title = data.title;
-		queryData.message = data.message;
-		queryData.icon = data.icon;
-		queryData.options = options;
-		queryData.customOptions = customOptions;
-		return queryData;
 	}
 
 };

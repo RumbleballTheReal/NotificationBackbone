@@ -5,61 +5,6 @@
 #include "CoreMinimal.h"
 #include "NotificationBackboneBPTypes.generated.h"
 
-// Options that are used to create a user query
-UENUM(BlueprintType)
-enum class ENotificationBackboneQueryOptions : uint8
-{
-	QO_OK				UMETA(DisplayName = "Ok"),
-	QO_Yes				UMETA(DisplayName = "Yes"),
-	QO_No				UMETA(DisplayName = "No"),
-	QO_Cancel			UMETA(DisplayName = "Cancel"),
-	QO_Save				UMETA(DisplayName = "Save"),
-	QO_Load				UMETA(DisplayName = "Load"),
-	QO_Retry			UMETA(DisplayName = "Retry"),
-	QO_Open				UMETA(DisplayName = "Open"),
-	QO_Close			UMETA(DisplayName = "Close"),
-	QO_New				UMETA(DisplayName = "New"),
-	QO_Delete			UMETA(DisplayName = "Delete"),
-	QO_Accept			UMETA(DisplayName = "Accept"),
-	QO_Reject			UMETA(DisplayName = "Reject"),
-	QO_Quit				UMETA(DisplayName = "Quit"),
-	QO_Continue			UMETA(DisplayName = "Continue"),
-	QO_Reserved1		UMETA(DisplayName = "Reserved1"),
-	QO_Reserved2		UMETA(DisplayName = "Reserved2"),
-	QO_Reserved3		UMETA(DisplayName = "Reserved3"),
-	QO_Reserved4		UMETA(DisplayName = "Reserved4"),
-	QO_Reserved5		UMETA(DisplayName = "Reserved5"),
-	QO_Custom1			UMETA(DisplayName = "Custom1"),
-	QO_Custom2			UMETA(DisplayName = "Custom2"),
-	QO_Custom3			UMETA(DisplayName = "Custom3"),
-	QO_Custom4			UMETA(DisplayName = "Custom4"),
-	QO_Custom5			UMETA(DisplayName = "Custom5"),
-};
-
-// We wrap the ID so people from BP can not put in another Guid or create a completely new one.
-USTRUCT(BlueprintType)
-struct FNotificationBackboneQueryId
-{
-	GENERATED_BODY();
-
-	bool operator==(const FNotificationBackboneQueryId& other) const
-	{
-		return idInternal == other.idInternal;
-	}
-
-	void Invalidate()
-	{
-		idInternal.Invalidate();
-	}
-
-	bool IsValid() const
-	{
-		return idInternal.IsValid();
-	}
-
-	FGuid idInternal;
-};
-
 USTRUCT(BlueprintType)
 struct FNotificationBackboneMessageData
 {
@@ -85,48 +30,6 @@ struct FNotificationBackboneNotification : public FNotificationBackboneMessageDa
 	// DO NOT SET IT, WILL GET OVERWRITTEN BY THE FEED
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 		float feedDispatchDelay;
-};
-
-USTRUCT(BlueprintType, meta = (HasNativeMake = "NotificationBackbone.NotificationBackboneLibrary.MakeNotificationBackboneQueryData"))
-struct FNotificationBackboneQueryData : public FNotificationBackboneMessageData
-{
-	GENERATED_BODY();
-
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
-		TArray<ENotificationBackboneQueryOptions> options;
-	
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, meta = (MakeStructureDefaultValue = ""))
-		TArray<FString> customOptions;
-};
-
-USTRUCT(BlueprintType)
-struct FNotificationBackboneQuery
-{
-	GENERATED_BODY();
-public:
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		FNotificationBackboneQueryData data;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		FNotificationBackboneQueryId id;
-};
-
-
-USTRUCT(BlueprintType)
-struct FNotificationBackboneQueryResult
-{
-	GENERATED_BODY();
-public:
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		FNotificationBackboneMessageData data;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		ENotificationBackboneQueryOptions optionChoosen;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-		FString customOptionChoosen;
 };
 
 USTRUCT(BlueprintType)
