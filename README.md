@@ -5,9 +5,9 @@
   Send notifications across your whole project from anywhere to anywhere.
   Notifications are handled per feed.
   Feeds 
-    - are defined by name (case insensitive)
-    - get created and destroyed as needed
-    - feed can have multiple subscribers
+    * are defined by name (case insensitive)
+    * get created and destroyed as needed
+    * feed can have multiple subscribers
     - has its own settings (see project settings Plugins->NotificationBackboneSettings)
       -delay dispatching
       -cache notifications
