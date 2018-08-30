@@ -13,15 +13,14 @@
 
 
 /**
- * TODO Check at some point if still valid
- *
- *This is the core of the NotificationBackbone. Here messages come in, get managed and rerouted to subscribers.
+ *	This is the core of the NotificationBackbone. Here messages come in, get managed and rerouted to subscribers.
  *
  *	Notifications:
  *	Notifications are handled per feed. A feed is defined by a name the user chooses.
- *  Notifications for a particular feed get dispatched immediately as soon as they come in and we have subscribers for that feed.
- *  Per default: Notifications that could not get dispatched because there is no subscriber, will get lost.
- *	You can change that in the settings via the editor.
+ *	Per default:
+ *		Notifications for a particular feed get dispatched immediately as soon as they come in and we have subscribers for that feed.
+ *		Notifications that could not get dispatched because there is no subscriber, will get dropped.
+ *	You can change that in the settings via the editor or config files.
  *  Each notification feed can have multiple subscribers.
  */
 class NOTIFICATIONBACKBONE_API FNotificationBackboneManager
