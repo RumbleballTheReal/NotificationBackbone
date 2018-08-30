@@ -7,12 +7,19 @@
   
   ### Feeds 
   
-    * are defined by name (case insensitive)
+    * are defined by name (case insensitive) (create feeds dynamically)
     * get created and destroyed as needed
-    * feed can have multiple subscribers
+    * can be blocked to pervent dispatching (usefull for delayed dispatching and loading times)
+    * can have multiple subscribers
     * have their own settings (see project settings Plugins->NotificationBackboneSettings)
       * delay dispatching
       * cache notifications
       * ...
  
   The plugin comes with demo widgets that help test/debug and give you an hint on how to use it.
+
+### Useage ideas
+  * Simple notifications for quest state reached, item pickup...
+  * Create a feed for dmg done to the player to pop up dmg numbers
+  * Send JSON structures across your project
+  * ...
