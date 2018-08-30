@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "NotificationBackbone",
+	"Description": "Provides the backend for a notification system. Supports different message feeds distinguished by name.",
+	"Category": "Other",
+	"CreatedBy": "Guenther Schrenk",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NotificationBackbone",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
